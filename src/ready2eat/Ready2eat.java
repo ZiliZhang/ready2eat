@@ -4,21 +4,37 @@
  * and open the template in the editor.
  */
 package ready2eat;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import java.sql.* ;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
-
 /**
  *
- * @author Keren He, DoYeon Kim, Yu Qin, Zili Zhang 
+ * @author zilizhang
  */
-public class Ready2eat {
+public class Ready2eat extends Application {
+    
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        stage.setScene(scene);
+        stage.show();
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException{
+        launch(args);
         int sqlCode=0;      // Variable to hold SQLCODE
         String sqlState="00000";  // Variable to hold SQLSTATE
         
@@ -45,7 +61,6 @@ public class Ready2eat {
                 // something more meaningful than a print would be good
                 System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
         }
-
     }
     
 }

@@ -1,5 +1,19 @@
-/bin/
-/ready2eat/nbproject/private/
-/ready2eat/build/
+# NetBeans specific #
+bin/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
 
 .DS_Store

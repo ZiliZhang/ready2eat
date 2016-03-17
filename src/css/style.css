@@ -1,0 +1,16 @@
+.button{
+    -fx-border-radius:30 30 30 30;
+    -fx-background-radius: 30 30 30 30;
+    -fx-border-color: transparent;
+    -fx-background-color: #CE2D4F;
+    -fx-text-fill: #ffff;
+    -fx-alignment: center;
+}
+.button:hover{
+    -fx-background-color: transparent;
+    -fx-text-fill: #CE2D4F;
+    -fx-border-color: #cfcfcf;
+}
+.root{
+    -fx-background-color: #ffff;
+}
