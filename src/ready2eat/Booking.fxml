@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="order" prefHeight="578.0" prefWidth="627.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ready2eat.BookController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Label layoutX="36.0" layoutY="29.0" prefHeight="29.0" prefWidth="303.0" text="Pick a time:" textFill="#ce2d4f">
+         <font>
+            <Font name="Microsoft Tai Le" size="13.0" />
+         </font>
+      </Label>
+      <ListView id="time_list" editable="true" layoutX="36.0" layoutY="58.0" prefHeight="106.0" prefWidth="272.0" />
+      <Button id="confirm" layoutX="208.0" layoutY="513.0" mnemonicParsing="false" onAction="#confirmBookAction" prefHeight="43.0" prefWidth="176.0" text="Book">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Button>
+      <ListView id="table_display" editable="true" layoutX="36.0" layoutY="205.0" prefHeight="280.0" prefWidth="568.0" />
+      <Label layoutX="36.0" layoutY="176.0" prefHeight="29.0" prefWidth="295.0" text="Pick a table (You can book more than one table):" textFill="#ce2d4f">
+         <font>
+            <Font name="Microsoft Tai Le" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="106.0" fitWidth="253.0" layoutX="351.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Screen%20Shot%202016-03-16%20at%209.45.52%20PM.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

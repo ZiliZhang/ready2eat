@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="order" prefHeight="578.0" prefWidth="627.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ready2eat.PaymentController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Label layoutX="34.0" layoutY="91.0" prefHeight="29.0" prefWidth="223.0" text="Payment Receipt:" textFill="#ce2d4f">
+         <font>
+            <Font name="Microsoft Tai Le" size="13.0" />
+         </font>
+      </Label>
+      <ListView id="receipt" editable="true" layoutX="34.0" layoutY="129.0" prefHeight="341.0" prefWidth="560.0" />
+      <Button id="booking_button" layoutX="237.0" layoutY="489.0" mnemonicParsing="false" onAction="#bookAction" prefHeight="50.0" prefWidth="138.0" text="Book a table!">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="90.0" fitWidth="243.0" layoutX="193.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Screen%20Shot%202016-03-16%20at%209.45.52%20PM.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

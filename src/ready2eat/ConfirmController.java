@@ -15,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -24,12 +23,10 @@ import javafx.stage.Stage;
  *
  * @author zilizhang
  */
-public class LoginController implements Initializable {
+public class ConfirmController implements Initializable {
 
     @FXML
     private Label label;
-    @FXML
-    private Button button;
 
     /**
      * Initializes the controller class.
@@ -37,18 +34,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void loginButtonAction(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = null;
-        root = FXMLLoader.load(getClass().getResource("Restaurant_list.fxml"));
-        
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.sizeToScene();
-        stage.centerOnScreen();
-    }
+    }  
+    
     
 }
