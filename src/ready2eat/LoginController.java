@@ -30,21 +30,28 @@ public class LoginController implements Initializable {
     private Label label;
     @FXML
     private Button button;
+    @FXML
+    private Button button1;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // What to do here?
     }    
 
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = null;
-        root = FXMLLoader.load(getClass().getResource("Restaurant_list.fxml"));
-        
+        Button clicked = (Button) event.getSource();
+        if (clicked.getId().equals("login")) {
+            root = FXMLLoader.load(getClass().getResource("Restaurant_list.fxml"));
+        }
+        else {
+            root = FXMLLoader.load(getClass().getResource("Registration.fxml"));
+        }
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.sizeToScene();

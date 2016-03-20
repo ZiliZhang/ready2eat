@@ -14,6 +14,5 @@
          </font>
       </Label>
       <ListView id="resto_list" editable="true" layoutX="35.0" layoutY="43.0" prefHeight="457.0" prefWidth="564.0" />
-      <Label layoutX="62.0" layoutY="67.0" onMouseClicked="#viewDishAction" prefHeight="29.0" prefWidth="169.0" text="RestaurentA" />
     </children>
 </AnchorPane>

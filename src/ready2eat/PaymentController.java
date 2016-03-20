@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -40,7 +41,11 @@ public class PaymentController implements Initializable {
     private void bookAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = null;
-        root = FXMLLoader.load(getClass().getResource("Booking.fxml"));
+        Button clicked = (Button) event.getSource();
+        if (clicked.getId().equals("booking_button")) {
+            root = FXMLLoader.load(getClass().getResource("Booking.fxml"));
+        }
+        else root = FXMLLoader.load(getClass().getResource("Confirmation.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.sizeToScene();

@@ -17,7 +17,7 @@
          </font>
       </Label>
       <ListView id="receipt" editable="true" layoutX="34.0" layoutY="129.0" prefHeight="341.0" prefWidth="560.0" />
-      <Button id="booking_button" layoutX="237.0" layoutY="489.0" mnemonicParsing="false" onAction="#bookAction" prefHeight="50.0" prefWidth="138.0" text="Book a table!">
+      <Button id="booking_button" layoutX="126.0" layoutY="493.0" mnemonicParsing="false" onAction="#bookAction" prefHeight="50.0" prefWidth="138.0" text="Book a table!">
          <font>
             <Font size="23.0" />
          </font>
@@ -27,5 +27,10 @@
             <Image url="@../img/Screen%20Shot%202016-03-16%20at%209.45.52%20PM.png" />
          </image>
       </ImageView>
+      <Button id="confirm" layoutX="367.0" layoutY="493.0" mnemonicParsing="false" onAction="#bookAction" prefHeight="50.0" prefWidth="138.0" text="Confirm!">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

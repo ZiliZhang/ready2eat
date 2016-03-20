@@ -41,7 +41,6 @@ public class RestaurantController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = null;
         root = FXMLLoader.load(getClass().getResource("Dish_list.fxml"));
-        
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.sizeToScene();
