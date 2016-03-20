@@ -17,8 +17,8 @@
             <Image url="@../img/Screen%20Shot%202016-03-16%20at%209.45.52%20PM.png" />
          </image>
       </ImageView>
-      <Label layoutX="139.0" layoutY="278.0" prefHeight="58.0" prefWidth="274.0" text="Keren He, DoYeon Kim, Yu Qin, Zili Zhang" />
-      <Label layoutX="241.0" layoutY="312.0" prefHeight="29.0" prefWidth="69.0" text="Group 08">
+      <Label layoutX="152.0" layoutY="278.0" prefHeight="58.0" prefWidth="274.0" text="Keren He, DoYeon Kim, Yu Qin, Zili Zhang" />
+      <Label layoutX="233.0" layoutY="312.0" prefHeight="29.0" prefWidth="69.0" text="Group 08">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
