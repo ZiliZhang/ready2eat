@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,7 +33,6 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author zilizhang
  */
 public class PaymentController implements Initializable {
 
@@ -66,7 +63,7 @@ public class PaymentController implements Initializable {
             con = new Ready2eat().getConnection();
             statement = con.createStatement();
             String selectSQL = "SELECT * FROM users WHERE email='" + user_email + "'";
-            System.out.println(selectSQL);
+            //System.out.println(selectSQL);
             rs = statement.executeQuery(selectSQL);
             rs.next();
             user_info = "Email: " + user_email + "\n" + 

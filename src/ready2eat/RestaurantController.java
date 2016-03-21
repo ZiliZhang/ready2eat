@@ -9,8 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,7 +26,6 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author zilizhang
  */
 public class RestaurantController implements Initializable {
 
@@ -54,7 +51,7 @@ public class RestaurantController implements Initializable {
             ResultSet rs = statement.executeQuery(selectSQL);
             ArrayList<String> restaurants = new ArrayList<>();
             while (rs.next()) {
-                String s1 = rs.getString(1) + "------" + rs.getString(2);
+                String s1 = rs.getString(1) + "--------" + rs.getString(2);
                 restaurants.add(s1);
             }
             ObservableList<String> restos = FXCollections.observableArrayList(restaurants);
@@ -78,7 +75,7 @@ public class RestaurantController implements Initializable {
         Parent root = null;
         if (event.getClickCount() >= 2) {
            String currentItemSelected = (String) resto_list.getSelectionModel().getSelectedItem();
-           System.out.println(currentItemSelected);
+           //System.out.println(currentItemSelected);
            ResourceBundle rb = new ResourceBundle(){
                @Override
                protected Object handleGetObject(String key) {

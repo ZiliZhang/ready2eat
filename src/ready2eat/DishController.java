@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,7 +33,6 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author zilizhang
  */
 public class DishController implements Initializable {
 
@@ -68,7 +65,7 @@ public class DishController implements Initializable {
             con = new Ready2eat().getConnection();
             statement = con.createStatement();
             String selectSQL = "SELECT * FROM dishes WHERE rName='" + resto_name + "'";
-            System.out.println(selectSQL);
+            //System.out.println(selectSQL);
             ResultSet rs = statement.executeQuery(selectSQL);
             ArrayList<String> dishes = new ArrayList<>();
             while (rs.next()) {

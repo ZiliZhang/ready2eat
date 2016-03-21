@@ -11,18 +11,18 @@
 <AnchorPane id="order" prefHeight="578.0" prefWidth="627.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ready2eat.PaymentController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Label layoutX="34.0" layoutY="91.0" prefHeight="29.0" prefWidth="223.0" text="Payment Receipt:" textFill="#ce2d4f">
+      <Label layoutX="41.0" layoutY="123.0" prefHeight="29.0" prefWidth="223.0" text="Payment Receipt:" textFill="#ce2d4f">
          <font>
-            <Font name="Microsoft Tai Le" size="13.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <ListView id="receipt" fx:id="payment" editable="true" layoutX="34.0" layoutY="129.0" prefHeight="341.0" prefWidth="560.0" />
+      <ListView id="receipt" fx:id="payment" editable="true" layoutX="47.0" layoutY="165.0" prefHeight="304.0" prefWidth="536.0" />
       <Button id="booking_button" layoutX="126.0" layoutY="493.0" mnemonicParsing="false" onAction="#bookAction" prefHeight="50.0" prefWidth="138.0" text="Book a table!">
          <font>
             <Font size="23.0" />
          </font>
       </Button>
-      <ImageView fitHeight="90.0" fitWidth="243.0" layoutX="193.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="86.0" fitWidth="269.0" layoutX="181.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Screen%20Shot%202016-03-16%20at%209.45.52%20PM.png" />
          </image>
@@ -32,6 +32,6 @@
             <Font size="23.0" />
          </font>
       </Button>
-      <Button fx:id="exit" layoutX="583.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#exit" text="Exit" />
+      <Button fx:id="exit" layoutX="549.0" layoutY="11.0" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="29.0" prefWidth="61.0" text="Exit" />
     </children>
 </AnchorPane>

@@ -11,22 +11,22 @@
 <AnchorPane id="order" onMouseClicked="#exit" prefHeight="578.0" prefWidth="627.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ready2eat.BookController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Label layoutX="270.0" layoutY="124.0" prefHeight="29.0" prefWidth="80.0" text="Pick a time:" textFill="#ce2d4f">
+      <Label layoutX="62.0" layoutY="106.0" prefHeight="29.0" prefWidth="128.0" text="Pick a time:" textFill="#ce2d4f">
          <font>
-            <Font name="Microsoft Tai Le" size="13.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <ListView id="time_list" fx:id="time_list" editable="true" layoutX="36.0" layoutY="160.0" onMouseClicked="#chooseTime" prefHeight="316.0" prefWidth="546.0" />
-      <Button id="confirm" layoutX="221.0" layoutY="513.0" mnemonicParsing="false" onAction="#confirmBookAction" prefHeight="43.0" prefWidth="176.0" text="Book">
+      <ListView id="time_list" fx:id="time_list" editable="true" layoutX="62.0" layoutY="153.0" onMouseClicked="#chooseTime" prefHeight="319.0" prefWidth="504.0" />
+      <Button id="confirm" layoutX="222.0" layoutY="502.0" mnemonicParsing="false" onAction="#confirmBookAction" prefHeight="43.0" prefWidth="176.0" text="Book">
          <font>
             <Font size="31.0" />
          </font>
       </Button>
-      <ImageView fitHeight="106.0" fitWidth="253.0" layoutX="183.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="106.0" fitWidth="253.0" layoutX="184.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Screen%20Shot%202016-03-16%20at%209.45.52%20PM.png" />
          </image>
       </ImageView>
-      <Button fx:id="exit" layoutX="585.0" layoutY="3.0" mnemonicParsing="false" onMouseClicked="#exit" text="Exit" />
+      <Button fx:id="exit" layoutX="553.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="29.0" prefWidth="44.0" text="Exit" />
     </children>
 </AnchorPane>

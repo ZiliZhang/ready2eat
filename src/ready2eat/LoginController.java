@@ -33,7 +33,6 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author zilizhang
  */
 public class LoginController implements Initializable {
 
@@ -80,7 +79,7 @@ public class LoginController implements Initializable {
                 statement = con.createStatement();
                 String selectSQL = "SELECT * FROM users WHERE email='" + email.getText() + 
                        "' AND pwd='" + pwd.getText() + "'";
-                System.out.println(selectSQL);
+                //System.out.println(selectSQL);
                 ResultSet rs = statement.executeQuery(selectSQL);
                 if (rs.next()) {
                     root = FXMLLoader.load(getClass().getResource("Restaurant_list.fxml"), rb);
