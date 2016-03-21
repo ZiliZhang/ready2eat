@@ -44,11 +44,11 @@ public class DishController implements Initializable {
     private ListView<String> dish_list;
 
     String user_email = "";
-    String resto = "";
-    HashMap<String, Integer> orderMap = new HashMap<String, Integer>();
+    String resto_name = "";
+    HashMap<String, Integer> orderMap = new HashMap<>();
     ObservableList<String> orders = FXCollections.observableArrayList(new ArrayList<String>());
     @FXML
-    private ListView<String> order_list = new ListView<String>();
+    private ListView<String> order_list = new ListView<>();
     
     /**
      * Initializes the controller class.
@@ -56,9 +56,9 @@ public class DishController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         user_email = (String) rb.getObject("");
-        resto = (String) rb.getObject("currentItem");
+        String resto = (String) rb.getObject("currentItem");
         int i = resto.indexOf("------");
-        String resto_name = resto.substring(0, i);
+        resto_name = resto.substring(0, i);
         Connection con;
         Statement statement;
         try {
@@ -71,15 +71,14 @@ public class DishController implements Initializable {
             while (rs.next()) {
                 String s1 = rs.getString(1) + "\t\t" + rs.getString(4);
                 dishes.add(s1);
-                if (orderMap.get(s1) != null) orderMap.put(s1, orderMap.get(s1)+1);
-                else orderMap.put(s1, 1);
             }
             ObservableList<String> dishlist = FXCollections.observableArrayList(dishes);
             dish_list.setItems(dishlist);
             con.close();
+            rs.close();
         } 
         catch (ClassNotFoundException ex) {
-            Logger.getLogger(DishController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ClassNotFoundException: " + ex.getClass());
         } 
         catch (SQLException ex) {
             int sqlCode = ex.getErrorCode();
@@ -95,6 +94,9 @@ public class DishController implements Initializable {
                                                     .getSelectedItem();
             orders.add(currentItemSelected);
             order_list.setItems(orders);
+            String dish_name = currentItemSelected.substring(0, currentItemSelected.indexOf("\t\t"));
+            if (orderMap.get(dish_name) != null) orderMap.put(dish_name, orderMap.get(dish_name)+1);
+            else orderMap.put(dish_name, 1);
         }
     }
 
@@ -106,7 +108,7 @@ public class DishController implements Initializable {
             @Override
             protected Object handleGetObject(String key) {
                 if (key.equals("orders")) return orders;
-                if (key.equals("resto")) return resto;
+                if (key.equals("resto")) return resto_name;
                 if (key.equals("orderMap")) return orderMap;
                 else return user_email;
             }

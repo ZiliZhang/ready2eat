@@ -10,7 +10,7 @@
 <AnchorPane id="order" prefHeight="578.0" prefWidth="627.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ready2eat.ConfirmController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Button id="back_to_front" layoutX="217.0" layoutY="414.0" mnemonicParsing="false" onMouseClicked="#backToFront" prefHeight="47.0" prefWidth="180.0" text="Order more?">
+      <Button id="back_to_front" layoutX="217.0" layoutY="414.0" mnemonicParsing="false" onAction="#backToFront" prefHeight="47.0" prefWidth="180.0" text="Order more?">
          <font>
             <Font size="31.0" />
          </font>

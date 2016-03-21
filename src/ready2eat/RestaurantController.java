@@ -1,9 +1,4 @@
 package ready2eat;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,18 +35,15 @@ public class RestaurantController implements Initializable {
     private Label label;
     @FXML
     private ListView resto_list;
-    
     String user_email = "";
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        user_email = (String) rb.getObject("");
         Connection con;
         Statement statement;
-        //System.out.println(rb.getObject("NULL"));
-        user_email = (String) rb.getObject(null);
-        System.out.println(user_email);
         try {
             con = new Ready2eat().getConnection();
             statement = con.createStatement();
@@ -65,9 +57,10 @@ public class RestaurantController implements Initializable {
             ObservableList<String> restos = FXCollections.observableArrayList(restaurants);
             resto_list.setItems(restos);
             con.close();
+            rs.close();
         }
         catch (ClassNotFoundException ex) {
-            Logger.getLogger(Ready2eat.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ClassNotFoundException: " + ex.getClass());
         }
         catch (SQLException e){
             int sqlCode = e.getErrorCode();
@@ -81,8 +74,7 @@ public class RestaurantController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = null;
         if (event.getClickCount() >= 2) {
-           String currentItemSelected = (String) resto_list.getSelectionModel()
-                                                    .getSelectedItem();
+           String currentItemSelected = (String) resto_list.getSelectionModel().getSelectedItem();
            System.out.println(currentItemSelected);
            ResourceBundle rb = new ResourceBundle(){
                @Override
@@ -99,6 +91,7 @@ public class RestaurantController implements Initializable {
            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dish_list.fxml"), rb);
            root = loader.load();
         }
+        else return;
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.sizeToScene();

@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,8 +46,9 @@ public class PaymentController implements Initializable {
     ObservableList<String> order = FXCollections.observableArrayList(new ArrayList<String>());
     ResultSet rs;
     String resto = "";
+    HashMap<String, Integer> orderMap = new HashMap<>();
     @FXML
-    private ListView<String> payment = new ListView<String>();
+    private ListView<String> payment = new ListView<>();
     float total = 0;
     /**
      * Initializes the controller class.
@@ -54,6 +56,7 @@ public class PaymentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         user_email = (String) rb.getObject("");
+        orderMap = (HashMap) rb.getObject("orderMap");
         Connection con;
         Statement statement;
         try {
@@ -63,16 +66,16 @@ public class PaymentController implements Initializable {
             System.out.println(selectSQL);
             rs = statement.executeQuery(selectSQL);
             rs.next();
-            user_info = "Email: " + rs.getString(1) + "\n" + 
+            user_info = "Email: " + user_email + "\n" + 
                                "Username: " + rs.getString(2) + "\n" +
                                "Phone Number: " + rs.getString(4) + "\n" +
                                "Billing Address: " + rs.getString(5) + "\n" +
                                "Card Number (last 4 digits): " + rs.getString(6).substring(rs.getString(6).length()-4, rs.getString(6).length()) + "\n";
-            System.out.println("whats here" + user_info);
             con.close();
+            rs.close();
         }
         catch (ClassNotFoundException ex) {
-            Logger.getLogger(Ready2eat.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ClassNotFoundException: " + ex.getClass());
         }
         catch (SQLException e){
             int sqlCode = e.getErrorCode();
@@ -100,10 +103,20 @@ public class PaymentController implements Initializable {
             ResourceBundle rb = new ResourceBundle(){
                @Override
                protected Object handleGetObject(String key) {
-                   if (key.equals("order")) return order;
-                   else if (key.equals("total")) return total;
-                   else if (key.equals("istakeout")) return true;
-                   else return rs;
+                   switch (key) {
+                       case "order":
+                           return order;
+                       case "total":
+                           return total;
+                       case "resto":
+                           return resto;
+                       case "istakeout":
+                           return true;
+                       case "orderMap":
+                           return orderMap;
+                       default:
+                           return user_email;
+                   }
                }
 
                @Override
@@ -117,11 +130,20 @@ public class PaymentController implements Initializable {
             ResourceBundle rb = new ResourceBundle(){
                @Override
                protected Object handleGetObject(String key) {
-                   if (key.equals("order")) return order;
-                   else if (key.equals("total")) return total;
-                   else if (key.equals("resto")) return resto;
-                   else if (key.equals("istakeout")) return false;
-                   else return rs;
+                   switch (key) {
+                       case "order":
+                           return order;
+                       case "total":
+                           return total;
+                       case "resto":
+                           return resto;
+                       case "istakeout":
+                           return false;
+                       case "orderMap":
+                           return orderMap;
+                       default:
+                           return user_email;
+                   }
                }
 
                @Override
