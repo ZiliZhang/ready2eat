@@ -88,6 +88,7 @@ public class LoginController implements Initializable {
                     email.setText("Wrong credentials! Try again.");
                     return;
                 }
+                con.close();
             }
             catch (ClassNotFoundException ex) {
                 System.out.println("ClassNotFoundException: " + ex.getClass());

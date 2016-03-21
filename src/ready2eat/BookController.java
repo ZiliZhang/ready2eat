@@ -48,6 +48,7 @@ public class BookController implements Initializable {
     String user_email;
     String currentItemSelected;
     Integer table_num;
+    String time_slot;
     ArrayList<String> timeslots = new ArrayList<>();
     /**
      * Initializes the controller class.
@@ -76,7 +77,8 @@ public class BookController implements Initializable {
             }
             else {
                 do {
-         
+                    table_num = rs.getInt("tablenum");
+                    time_slot = rs.getString("slot");
                     String s1 = "Table Number: " +rs.getInt("tablenum")+ ", Max Number of Seats: " + rs.getInt("maxnumofseats")+",Time Slot: "+rs.getString("slot");
                     timeslots.add(s1);
                 } while (rs.next());
@@ -112,8 +114,10 @@ public class BookController implements Initializable {
                            return resto;
                        case "istakeout":
                            return true;
-                       case "booking" :
-                           return currentItemSelected;
+                       case "table_num":
+                           return table_num;
+                       case "time_slot":
+                           return time_slot;
                        case "orderMap":
                            return orderMap;
                        default:
@@ -141,10 +145,7 @@ public class BookController implements Initializable {
 
     @FXML
     private void chooseTime(MouseEvent event) {
-        if (event.getClickCount() >= 2) {
            currentItemSelected = (String) time_list.getSelectionModel().getSelectedItem();
            //table_num = Integer.parseInt(currentItemSelected.substring(14, currentItemSelected.indexOf(',')));
-        }
     }
-    
 }

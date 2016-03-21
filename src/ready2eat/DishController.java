@@ -95,7 +95,10 @@ public class DishController implements Initializable {
             orders.add(currentItemSelected);
             order_list.setItems(orders);
             String dish_name = currentItemSelected.substring(0, currentItemSelected.indexOf("\t\t"));
-            if (orderMap.get(dish_name) != null) orderMap.put(dish_name, orderMap.get(dish_name)+1);
+            if (orderMap.get(dish_name) != null) {
+                orderMap.put(dish_name, orderMap.get(dish_name)+1);
+                System.out.println("OVER HERE" + orderMap.get(dish_name));
+            }
             else orderMap.put(dish_name, 1);
         }
     }
