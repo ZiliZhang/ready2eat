@@ -49,7 +49,8 @@ public class RestaurantController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Connection con;
         Statement statement;
-        user_email = (String) rb.getObject("NULL");
+        //System.out.println(rb.getObject("NULL"));
+        user_email = (String) rb.getObject(null);
         System.out.println(user_email);
         try {
             con = new Ready2eat().getConnection();

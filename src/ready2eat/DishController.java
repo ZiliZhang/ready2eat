@@ -53,8 +53,8 @@ public class DishController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        user_email = (String) rb.getObject(null);
-        String resto = (String) rb.getObject(null);
+        user_email = (String) rb.getObject("");
+        String resto = (String) rb.getObject("currentItem");
         int i = resto.indexOf("------");
         String resto_name = resto.substring(0, i);
         Connection con;
@@ -101,6 +101,7 @@ public class DishController implements Initializable {
         ResourceBundle rb = new ResourceBundle(){
             @Override
             protected Object handleGetObject(String key) {
+                System.out.println("HIfrthjtgdjhtrhygjh");
                 if (key.equals("orders")) return orders;
                 else return user_email;
             }

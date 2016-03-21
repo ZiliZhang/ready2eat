@@ -51,7 +51,7 @@ public class PaymentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        user_email = (String) rb.getObject(null);
+        user_email = (String) rb.getObject("");
         
         Connection con;
         Statement statement;
@@ -80,7 +80,9 @@ public class PaymentController implements Initializable {
         order.addAll((ObservableList<String>) rb.getObject("orders"));
         int total = 0;
         for (int i = 0; i < order.size(); i++) {
-            int priceIndex = order.get(i).indexOf("/t");
+            System.out.println(order.get(i));
+            int priceIndex = order.get(i).indexOf("$");
+            System.out.println(priceIndex);
             total += Integer.parseInt(order.get(i).substring(priceIndex, order.get(i).length()));
         }
         order.add("\nTotal: "+total);

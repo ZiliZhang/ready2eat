@@ -50,22 +50,24 @@ public class LoginController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = null;
         Button clicked = (Button) event.getSource();
+        ResourceBundle rb = new ResourceBundle(){
+                @Override
+                protected Object handleGetObject(String key) {
+                    String user_email = email.getText();
+                    System.out.println("HIfrthjtgdjhtrhygjh");
+                    System.out.println(user_email);
+                    return user_email;
+                }
+                @Override
+                public Enumeration<String> getKeys() {
+                    return null;
+                }               
+            };
         if (clicked.getId().equals("login")) {
-            ResourceBundle rb = new ResourceBundle(){
-            @Override
-            protected Object handleGetObject(String key) {
-                String user_email = email.getText();
-                return user_email;
-            }
-            @Override
-            public Enumeration<String> getKeys() {
-                return null;
-            }               
-        };
             root = FXMLLoader.load(getClass().getResource("Restaurant_list.fxml"), rb);
         }
         else {
-            root = FXMLLoader.load(getClass().getResource("Registration.fxml"));
+            root = FXMLLoader.load(getClass().getResource("Registration.fxml"), rb);
         }
         Scene scene = new Scene(root);
         stage.setScene(scene);

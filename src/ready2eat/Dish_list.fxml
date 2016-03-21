@@ -23,7 +23,7 @@
             <Font name="Microsoft Tai Le" size="13.0" />
          </font>
       </Label>
-      <Button layoutX="511.0" layoutY="507.0" mnemonicParsing="false" onAction="#payAction" prefHeight="29.0" prefWidth="82.0" text="Order!">
+      <Button layoutX="511.0" layoutY="498.0" mnemonicParsing="false" onAction="#payAction" prefHeight="29.0" prefWidth="82.0" text="Order!">
          <font>
             <Font size="27.0" />
          </font>
