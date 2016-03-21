@@ -101,6 +101,7 @@ public class ConfirmController implements Initializable {
     public void backToFront(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = null;
+        Button clicked = (Button) event.getSource();
         ResourceBundle rb = new ResourceBundle(){
                 @Override
                 protected Object handleGetObject(String key) {
@@ -111,7 +112,14 @@ public class ConfirmController implements Initializable {
                     return null;
                 }               
             };
-        root = FXMLLoader.load(getClass().getResource("Restaurant_list.fxml"), rb);
+        if (clicked.getId().equals("back_to_front")){
+            root = FXMLLoader.load(getClass().getResource("Restaurant_list.fxml"), rb);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.sizeToScene();
+            stage.centerOnScreen();
+        }
+        else root = FXMLLoader.load(getClass().getResource("Review.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.sizeToScene();
