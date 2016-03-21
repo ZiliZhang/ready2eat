@@ -27,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -46,6 +47,8 @@ public class LoginController implements Initializable {
     private Button button1;
     @FXML
     private PasswordField pwd;
+    @FXML
+    private Button exit;
 
     /**
      * Initializes the controller class.
@@ -101,6 +104,12 @@ public class LoginController implements Initializable {
         stage.setScene(scene);
         stage.sizeToScene();
         stage.centerOnScreen();
+    }
+    
+    @FXML
+    private void exit(MouseEvent event) {
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
     }
     
 }

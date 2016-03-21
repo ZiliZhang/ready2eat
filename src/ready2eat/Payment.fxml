@@ -32,5 +32,6 @@
             <Font size="23.0" />
          </font>
       </Button>
+      <Button fx:id="exit" layoutX="583.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#exit" text="Exit" />
     </children>
 </AnchorPane>

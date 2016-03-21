@@ -47,5 +47,6 @@
       <Label fx:id="label61" layoutX="127.0" layoutY="445.0" minHeight="16" minWidth="69" />
       <TextField id="cvv" fx:id="cvv" layoutX="173.0" layoutY="446.0" prefHeight="25.0" prefWidth="46.0" />
       <Text layoutX="82.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CVV:" />
+      <Button fx:id="exit" layoutX="583.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#exit" text="Exit" />
     </children>
 </AnchorPane>

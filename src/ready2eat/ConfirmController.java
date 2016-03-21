@@ -12,16 +12,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +24,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -42,6 +39,8 @@ public class ConfirmController implements Initializable {
     @FXML
     private Label label;
     String user_email;
+    @FXML
+    private Button exit;
     /**
      * Initializes the controller class.
      */
@@ -79,6 +78,14 @@ public class ConfirmController implements Initializable {
                 Statement statement2 = con.createStatement();
                 statement2.executeQuery(selectSQL);
             }
+            if ((boolean) rb.getObject("istakeout")) {
+                String currentItemSelected = (String) rb.getObject("booking");
+                Integer table_num = Integer.parseInt(currentItemSelected.substring(14, currentItemSelected.indexOf(',')));
+                String selectSQL2 = "UPDATE timeslots SET available=false WHERE rname='" + resto + "' AND tablenum=" + table_num;
+                System.out.println(selectSQL);
+                ResultSet rs2 = statement.executeQuery(selectSQL2);
+            }
+            
         }
         catch (ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException: " + ex.getClass());
@@ -90,6 +97,7 @@ public class ConfirmController implements Initializable {
         }
     }  
     
+    @FXML
     public void backToFront(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = null;
@@ -108,5 +116,11 @@ public class ConfirmController implements Initializable {
         stage.setScene(scene);
         stage.sizeToScene();
         stage.centerOnScreen();
+    }
+    
+    @FXML
+    private void exit(MouseEvent event) {
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
     }
 }

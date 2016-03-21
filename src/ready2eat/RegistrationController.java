@@ -25,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -52,6 +53,24 @@ public class RegistrationController implements Initializable {
     private PasswordField pwd;
     @FXML
     private TextField cvv;
+    @FXML
+    private Label label;
+    @FXML
+    private Label label1;
+    @FXML
+    private Label label2;
+    @FXML
+    private Label label3;
+    @FXML
+    private Label label4;
+    @FXML
+    private Label label5;
+    @FXML
+    private Label label6;
+    @FXML
+    private Label label61;
+    @FXML
+    private Button exit;
 
     /**
      * Initializes the controller class.
@@ -95,5 +114,11 @@ public class RegistrationController implements Initializable {
         stage.setScene(scene);
         stage.sizeToScene();
         stage.centerOnScreen();
+    }
+    
+    @FXML
+    private void exit(MouseEvent event) {
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
     }
 }

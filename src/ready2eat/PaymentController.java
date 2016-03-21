@@ -29,6 +29,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -50,6 +51,8 @@ public class PaymentController implements Initializable {
     @FXML
     private ListView<String> payment = new ListView<>();
     float total = 0;
+    @FXML
+    private Button exit;
     /**
      * Initializes the controller class.
      */
@@ -157,6 +160,12 @@ public class PaymentController implements Initializable {
         stage.setScene(scene);
         stage.sizeToScene();
         stage.centerOnScreen();
+    }
+    
+    @FXML
+    private void exit(MouseEvent event) {
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
     }
     
 }

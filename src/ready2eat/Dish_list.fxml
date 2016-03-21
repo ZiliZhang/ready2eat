@@ -33,5 +33,6 @@
             <Image url="@../img/Screen%20Shot%202016-03-16%20at%209.45.52%20PM.png" />
          </image>
       </ImageView>
+      <Button fx:id="exit" layoutX="584.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#exit" text="Exit" />
     </children>
 </AnchorPane>
