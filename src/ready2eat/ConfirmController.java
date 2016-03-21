@@ -26,6 +26,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -38,8 +39,12 @@ public class ConfirmController implements Initializable {
     @FXML
     private Label label;
     String user_email;
+    String time_slot;
+    Integer table_num;
     @FXML
     private Button exit;
+    @FXML
+    private Label table_confirm;
     /**
      * Initializes the controller class.
      */
@@ -66,25 +71,32 @@ public class ConfirmController implements Initializable {
             int transNum = rs.getInt(1);
             HashMap<String, Integer> orderMap = (HashMap) rb.getObject("orderMap");
             Iterator it = orderMap.entrySet().iterator();
-            while (it.hasNext()) {
-                Map.Entry pair = (Map.Entry) it.next();
-                System.out.println(pair.getKey());
+            for (Map.Entry<String, Integer> pair : orderMap.entrySet()) {
                 selectSQL = "INSERT INTO orderItems VALUES (" + transNum + ", '" + 
                     resto + "', '" + pair.getKey() + "', " + 
                         pair.getValue() + ")";
                 System.out.println(selectSQL);
-                System.out.println(pair.getKey());
                 Statement statement2 = con.createStatement();
-                statement2.executeQuery(selectSQL);
+                try {
+                    statement2.executeQuery(selectSQL);
+                }
+                catch (SQLException e){
+                    int sqlCode = e.getErrorCode();
+                    String sqlState = e.getSQLState();
+                    System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
+                }
             }
             if ((boolean) rb.getObject("istakeout")) {
-                String currentItemSelected = (String) rb.getObject("booking");
-                Integer table_num = Integer.parseInt(currentItemSelected.substring(14, currentItemSelected.indexOf(',')));
-                String selectSQL2 = "UPDATE timeslots SET available=false WHERE rname='" + resto + "' AND tablenum=" + table_num;
-                System.out.println(selectSQL);
-                ResultSet rs2 = statement.executeQuery(selectSQL2);
+                table_num = (Integer) rb.getObject("table_num");
+                System.out.println(table_num);
+                time_slot = (String) rb.getObject("time_slot");
+                System.out.println(time_slot);
+                String selectSQL2 = "UPDATE timeslots SET availability=false WHERE rname='" + resto + "' AND tablenum=" + table_num + " AND slot='" + time_slot + "'";
+                System.out.println(selectSQL2);
+                PreparedStatement statement2 = con.prepareStatement(selectSQL2);
+                statement2.executeUpdate();
             }
-            
+            con.close();
         }
         catch (ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException: " + ex.getClass());
@@ -94,6 +106,9 @@ public class ConfirmController implements Initializable {
             String sqlState = e.getSQLState();
             System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
         }
+        
+        table_confirm.setText("Your table number is: " + table_num + "\n" +
+                            "For Time Slot: " + time_slot);
     }  
     
     @FXML
