@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,30 +43,32 @@ public class PaymentController implements Initializable {
     String user_email = "";
     String user_info = "";
     ObservableList<String> order = FXCollections.observableArrayList(new ArrayList<String>());
-    
+    ResultSet rs;
+    String resto = "";
     @FXML
     private ListView<String> payment = new ListView<String>();
-
+    float total = 0;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         user_email = (String) rb.getObject("");
-        
         Connection con;
         Statement statement;
         try {
             con = new Ready2eat().getConnection();
             statement = con.createStatement();
             String selectSQL = "SELECT * FROM users WHERE email='" + user_email + "'";
-            ResultSet rs = statement.executeQuery(selectSQL);
-            rs.first();
+            System.out.println(selectSQL);
+            rs = statement.executeQuery(selectSQL);
+            rs.next();
             user_info = "Email: " + rs.getString(1) + "\n" + 
                                "Username: " + rs.getString(2) + "\n" +
                                "Phone Number: " + rs.getString(4) + "\n" +
                                "Billing Address: " + rs.getString(5) + "\n" +
                                "Card Number (last 4 digits): " + rs.getString(6).substring(rs.getString(6).length()-4, rs.getString(6).length()) + "\n";
+            System.out.println("whats here" + user_info);
             con.close();
         }
         catch (ClassNotFoundException ex) {
@@ -76,14 +79,13 @@ public class PaymentController implements Initializable {
             String sqlState = e.getSQLState();
             System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
         }
+        resto = (String) rb.getObject("resto");
+        order.add(resto);
         order.add(user_info);
         order.addAll((ObservableList<String>) rb.getObject("orders"));
-        int total = 0;
-        for (int i = 0; i < order.size(); i++) {
-            System.out.println(order.get(i));
+        for (int i = 2; i < order.size(); i++) {
             int priceIndex = order.get(i).indexOf("$");
-            System.out.println(priceIndex);
-            total += Integer.parseInt(order.get(i).substring(priceIndex, order.get(i).length()));
+            total += Float.parseFloat(order.get(i).substring(priceIndex+1, order.get(i).length()));
         }
         order.add("\nTotal: "+total);
         payment.setItems(order);
@@ -95,9 +97,40 @@ public class PaymentController implements Initializable {
         Parent root = null;
         Button clicked = (Button) event.getSource();
         if (clicked.getId().equals("booking_button")) {
-            root = FXMLLoader.load(getClass().getResource("Booking.fxml"));
+            ResourceBundle rb = new ResourceBundle(){
+               @Override
+               protected Object handleGetObject(String key) {
+                   if (key.equals("order")) return order;
+                   else if (key.equals("total")) return total;
+                   else if (key.equals("istakeout")) return true;
+                   else return rs;
+               }
+
+               @Override
+               public Enumeration<String> getKeys() {
+                   return null;
+               }               
+           };
+            root = FXMLLoader.load(getClass().getResource("Booking.fxml"), rb);
         }
-        else root = FXMLLoader.load(getClass().getResource("Confirmation.fxml"));
+        else {
+            ResourceBundle rb = new ResourceBundle(){
+               @Override
+               protected Object handleGetObject(String key) {
+                   if (key.equals("order")) return order;
+                   else if (key.equals("total")) return total;
+                   else if (key.equals("resto")) return resto;
+                   else if (key.equals("istakeout")) return false;
+                   else return rs;
+               }
+
+               @Override
+               public Enumeration<String> getKeys() {
+                   return null;
+               }               
+           };
+            root = FXMLLoader.load(getClass().getResource("Confirmation.fxml"), rb);
+        }
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.sizeToScene();

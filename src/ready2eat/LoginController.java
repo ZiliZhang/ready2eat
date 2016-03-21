@@ -54,7 +54,6 @@ public class LoginController implements Initializable {
                 @Override
                 protected Object handleGetObject(String key) {
                     String user_email = email.getText();
-                    System.out.println("HIfrthjtgdjhtrhygjh");
                     System.out.println(user_email);
                     return user_email;
                 }

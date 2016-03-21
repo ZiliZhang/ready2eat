@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,7 +44,8 @@ public class DishController implements Initializable {
     private ListView<String> dish_list;
 
     String user_email = "";
-    
+    String resto = "";
+    HashMap<String, Integer> orderMap = new HashMap<String, Integer>();
     ObservableList<String> orders = FXCollections.observableArrayList(new ArrayList<String>());
     @FXML
     private ListView<String> order_list = new ListView<String>();
@@ -54,7 +56,7 @@ public class DishController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         user_email = (String) rb.getObject("");
-        String resto = (String) rb.getObject("currentItem");
+        resto = (String) rb.getObject("currentItem");
         int i = resto.indexOf("------");
         String resto_name = resto.substring(0, i);
         Connection con;
@@ -67,8 +69,10 @@ public class DishController implements Initializable {
             ResultSet rs = statement.executeQuery(selectSQL);
             ArrayList<String> dishes = new ArrayList<>();
             while (rs.next()) {
-                String s1 = rs.getString(1) + "\t" + rs.getString(4);
+                String s1 = rs.getString(1) + "\t\t" + rs.getString(4);
                 dishes.add(s1);
+                if (orderMap.get(s1) != null) orderMap.put(s1, orderMap.get(s1)+1);
+                else orderMap.put(s1, 1);
             }
             ObservableList<String> dishlist = FXCollections.observableArrayList(dishes);
             dish_list.setItems(dishlist);
@@ -101,8 +105,9 @@ public class DishController implements Initializable {
         ResourceBundle rb = new ResourceBundle(){
             @Override
             protected Object handleGetObject(String key) {
-                System.out.println("HIfrthjtgdjhtrhygjh");
                 if (key.equals("orders")) return orders;
+                if (key.equals("resto")) return resto;
+                if (key.equals("orderMap")) return orderMap;
                 else return user_email;
             }
             @Override
