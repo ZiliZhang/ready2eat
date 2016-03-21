@@ -79,8 +79,6 @@ public class BookController implements Initializable {
             }
             else {
                 do {
-                    table_num = rs.getInt("tablenum");
-                    time_slot = rs.getString("slot");
                     String s1 = "Table Number: " +rs.getInt("tablenum")+ ", Max Number of Seats: " + rs.getInt("maxnumofseats")+",Time Slot: "+rs.getString("slot");
                     timeslots.add(s1);
                 } while (rs.next());
@@ -150,6 +148,17 @@ public class BookController implements Initializable {
     @FXML
     private void chooseTime(MouseEvent event) {
            currentItemSelected = (String) time_list.getSelectionModel().getSelectedItem();
+           //table_num = currentItemSelected.
+           //time_slot = rs.getString("slot");
+           //System.out.println(currentItemSelected);
+           Integer first_colon = currentItemSelected.indexOf(':');
+           Integer first_comma = currentItemSelected.indexOf(',');
+           Integer second_colon = currentItemSelected.indexOf(':', first_colon+1);
+           Integer third_colon = currentItemSelected.indexOf(':', second_colon+1);
+           table_num = Integer.parseInt(currentItemSelected.substring(first_colon+2, first_comma));
+           //System.out.println(table_num);
+           time_slot = currentItemSelected.substring(third_colon+2, currentItemSelected.length());
+           //System.out.println(time_slot);
            //table_num = Integer.parseInt(currentItemSelected.substring(14, currentItemSelected.indexOf(',')));
     }
 }
