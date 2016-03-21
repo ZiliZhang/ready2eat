@@ -7,6 +7,7 @@ package ready2eat;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Enumeration;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -28,6 +30,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private Label label;
+    @FXML
+    private TextField email;
     @FXML
     private Button button;
     @FXML
@@ -47,7 +51,18 @@ public class LoginController implements Initializable {
         Parent root = null;
         Button clicked = (Button) event.getSource();
         if (clicked.getId().equals("login")) {
-            root = FXMLLoader.load(getClass().getResource("Restaurant_list.fxml"));
+            ResourceBundle rb = new ResourceBundle(){
+            @Override
+            protected Object handleGetObject(String key) {
+                String user_email = email.getText();
+                return user_email;
+            }
+            @Override
+            public Enumeration<String> getKeys() {
+                return null;
+            }               
+        };
+            root = FXMLLoader.load(getClass().getResource("Restaurant_list.fxml"), rb);
         }
         else {
             root = FXMLLoader.load(getClass().getResource("Registration.fxml"));

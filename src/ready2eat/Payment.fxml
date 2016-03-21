@@ -16,7 +16,7 @@
             <Font name="Microsoft Tai Le" size="13.0" />
          </font>
       </Label>
-      <ListView id="receipt" editable="true" layoutX="34.0" layoutY="129.0" prefHeight="341.0" prefWidth="560.0" />
+      <ListView id="receipt" fx:id="payment" editable="true" layoutX="34.0" layoutY="129.0" prefHeight="341.0" prefWidth="560.0" />
       <Button id="booking_button" layoutX="126.0" layoutY="493.0" mnemonicParsing="false" onAction="#bookAction" prefHeight="50.0" prefWidth="138.0" text="Book a table!">
          <font>
             <Font size="23.0" />

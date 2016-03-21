@@ -36,5 +36,13 @@ public class ConfirmController implements Initializable {
         // TODO
     }  
     
-    
+    public void backToFront(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = null;
+        root = FXMLLoader.load(getClass().getResource("Restaurant_list.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.sizeToScene();
+        stage.centerOnScreen();
+    }
 }

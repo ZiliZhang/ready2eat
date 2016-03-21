@@ -14,6 +14,8 @@ import java.sql.* ;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author zilizhang
@@ -22,12 +24,17 @@ public class Ready2eat extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Restaurant_list.fxml"));
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
         stage.show();
+    }
+    
+    public Connection getConnection() throws ClassNotFoundException, SQLException{       
+        String url = "jdbc:postgresql://comp421.cs.mcgill.ca:5432/cs421";
+        return DriverManager.getConnection (url,"cs421g08", "ready2eat");
     }
 
     /**
@@ -35,32 +42,5 @@ public class Ready2eat extends Application {
      */
     public static void main(String[] args) throws SQLException{
         launch(args);
-        int sqlCode=0;      // Variable to hold SQLCODE
-        String sqlState="00000";  // Variable to hold SQLSTATE
-        
-        // Register the driver.You must register the driver before you can use it.
-        try {
-            DriverManager.registerDriver ( new org.postgresql.Driver() ) ;
-        } catch (Exception cnfe){
-            System.out.println("Class not found");
-        }
-        
-        String url = "jdbc:postgresql://comp421.cs.mcgill.ca:5432/cs421";
-        Connection con = DriverManager.getConnection (url,"cs421g08", "ready2eat") ;
-        Statement statement = con.createStatement ( ) ;
-         
-        try {
-	    String selectSQL = "SELECT * FROM dishes";
-	    System.out.println (selectSQL) ;
-	    statement.executeUpdate(selectSQL ) ;
-	}catch (SQLException e){
-                sqlCode = e.getErrorCode(); // Get SQLCODE
-                sqlState = e.getSQLState(); // Get SQLSTATE
-                
-                // Your code to handle errors comes here;
-                // something more meaningful than a print would be good
-                System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
-        }
     }
-    
 }

@@ -16,8 +16,8 @@
             <Font name="Microsoft Tai Le" size="13.0" />
          </font>
       </Label>
-      <ListView id="menu" editable="true" layoutX="35.0" layoutY="65.0" prefHeight="488.0" prefWidth="280.0" />
-      <ListView id="order_list" editable="true" layoutX="322.0" layoutY="182.0" prefHeight="370.0" prefWidth="280.0" />
+      <ListView id="menu" fx:id="dish_list" editable="true" layoutX="35.0" layoutY="65.0" onMouseClicked="#addToOrder" prefHeight="488.0" prefWidth="280.0" />
+      <ListView id="order_list" fx:id="order_list" editable="true" layoutX="322.0" layoutY="182.0" prefHeight="370.0" prefWidth="280.0" />
       <Label layoutX="322.0" layoutY="148.0" prefHeight="29.0" prefWidth="223.0" text="Order list:" textFill="#ce2d4f">
          <font>
             <Font name="Microsoft Tai Le" size="13.0" />

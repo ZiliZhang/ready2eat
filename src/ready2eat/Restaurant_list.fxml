@@ -8,11 +8,11 @@
 <AnchorPane id="AnchorPane" prefHeight="578.0" prefWidth="627.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ready2eat.RestaurantController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Label layoutX="36.0" layoutY="10.0" prefHeight="29.0" prefWidth="223.0" text="Available restaurants in your area:" textFill="#ff0d82">
+      <Label layoutX="36.0" layoutY="10.0" prefHeight="29.0" prefWidth="223.0" text="Available restaurants:" textFill="#ff0d82">
          <font>
             <Font name="Microsoft Tai Le" size="13.0" />
          </font>
       </Label>
-      <ListView id="resto_list" editable="true" layoutX="35.0" layoutY="43.0" prefHeight="457.0" prefWidth="564.0" />
+      <ListView id="resto_list" fx:id="resto_list" editable="true" layoutX="35.0" layoutY="43.0" prefHeight="457.0" prefWidth="564.0" onMouseClicked="#handleMouseClick"/>
     </children>
 </AnchorPane>
