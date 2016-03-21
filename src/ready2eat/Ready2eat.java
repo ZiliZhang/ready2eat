@@ -15,7 +15,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Ready2eat extends Application {
-    
+    public static boolean succ = true;
+    public static boolean isBook = false;
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));

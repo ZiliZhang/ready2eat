@@ -13,7 +13,7 @@
 <AnchorPane id="order" prefHeight="578.0" prefWidth="627.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ready2eat.RegistrationController">
     <children>
         <Label fx:id="label" layoutX="126.0" layoutY="137.0" minHeight="16" minWidth="69" />
-      <Button id="register" fx:id="register" layoutX="219.0" layoutY="498.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="47.0" prefWidth="180.0" text="Register">
+      <Button id="register" fx:id="register" layoutX="219.0" layoutY="503.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="42.0" prefWidth="149.0" text="Register">
          <font>
             <Font size="31.0" />
          </font>
@@ -23,30 +23,34 @@
             <Image url="@../img/Screen%20Shot%202016-03-16%20at%209.45.52%20PM.png" />
          </image>
       </ImageView>
-      <TextField id="email" fx:id="email" layoutX="188.0" layoutY="146.0" prefHeight="25.0" prefWidth="228.0" promptText="Email" />
-      <Text layoutX="83.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" />
+      <TextField id="email" fx:id="email" layoutX="188.0" layoutY="155.0" prefHeight="25.0" prefWidth="228.0" promptText="Email" />
+      <Text layoutX="83.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" />
       <Label fx:id="label1" layoutX="126.0" layoutY="177.0" minHeight="16" minWidth="69" />
-      <TextField id="username" fx:id="username" layoutX="188.0" layoutY="186.0" prefHeight="25.0" prefWidth="149.0" promptText="Username" />
-      <Text layoutX="82.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
+      <TextField id="username" fx:id="username" layoutX="188.0" layoutY="195.0" prefHeight="25.0" prefWidth="149.0" promptText="Username" />
+      <Text layoutX="82.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
       <Label fx:id="label2" layoutX="126.0" layoutY="219.0" minHeight="16" minWidth="69" />
       <Text layoutX="82.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <Label fx:id="label3" layoutX="126.0" layoutY="263.0" minHeight="16" minWidth="69" />
-      <TextField id="phone" fx:id="phone" layoutX="188.0" layoutY="272.0" promptText="10 digits" />
-      <Text layoutX="82.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number:" />
+      <TextField id="phone" fx:id="phone" layoutX="188.0" layoutY="281.0" promptText="10 digits" />
+      <Text layoutX="82.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number:" />
       <Label fx:id="label4" layoutX="126.0" layoutY="306.0" minHeight="16" minWidth="69" />
-      <TextField id="address" fx:id="address" layoutX="188.0" layoutY="315.0" prefHeight="25.0" prefWidth="377.0" />
-      <Text layoutX="82.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Billing address:" />
+      <TextField id="address" fx:id="address" layoutX="188.0" layoutY="324.0" prefHeight="25.0" prefWidth="377.0" />
+      <Text layoutX="82.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Billing address:" />
       <Label fx:id="label5" layoutX="126.0" layoutY="349.0" minHeight="16" minWidth="69" />
-      <TextField id="card" fx:id="card" layoutX="188.0" layoutY="358.0" promptText="16 digits" />
-      <Text layoutX="82.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card number:" />
+      <TextField id="card" fx:id="card" layoutX="188.0" layoutY="367.0" promptText="Exactly 16 digits" />
+      <Text layoutX="82.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card number:" />
       <Label fx:id="label6" layoutX="126.0" layoutY="392.0" minHeight="16" minWidth="69" />
-      <TextField id="expiry" fx:id="expiry" layoutX="188.0" layoutY="401.0" promptText="mmyy" />
-      <Text layoutX="82.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expiry date:" />
-      <PasswordField id="pwd" fx:id="pwd" layoutX="188.0" layoutY="228.0" prefHeight="27.0" prefWidth="247.0" promptText="Must contain at least one capitalized letter" />
-      <Text layoutX="83.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+      <TextField id="expiry" fx:id="expiry" layoutX="188.0" layoutY="410.0" promptText="mmyy" />
+      <Text layoutX="82.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expiry date:" />
+      <PasswordField id="pwd" fx:id="pwd" layoutX="188.0" layoutY="237.0" prefHeight="27.0" prefWidth="247.0" promptText="At least 6 digits" />
+      <Text layoutX="83.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
       <Label fx:id="label61" layoutX="127.0" layoutY="445.0" minHeight="16" minWidth="69" />
-      <TextField id="cvv" fx:id="cvv" layoutX="188.0" layoutY="446.0" prefHeight="27.0" prefWidth="66.0" promptText="3 digits " />
-      <Text layoutX="82.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CVV:" />
+      <TextField id="cvv" fx:id="cvv" layoutX="188.0" layoutY="455.0" prefHeight="27.0" prefWidth="66.0" promptText="3 digits " />
+      <Text layoutX="82.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CVV:" />
       <Button fx:id="exit" layoutX="535.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="27.0" prefWidth="64.0" text="Exit" />
+      <Label fx:id="registation_confirm" layoutX="77.0" layoutY="113.0" prefHeight="33.0" prefWidth="469.0" textFill="#c61d1d">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
     </children>
 </AnchorPane>

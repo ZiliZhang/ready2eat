@@ -71,12 +71,17 @@ public class RegistrationController implements Initializable {
     private Label label61;
     @FXML
     private Button exit;
-
+    @FXML
+    private Label registation_confirm; 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if(!Ready2eat.succ){
+            //System.out.println(Ready2eat.succ);
+            registation_confirm.setText("Registration Failure due to invailad inputs");
+        }
     }
 
     @FXML
@@ -102,11 +107,20 @@ public class RegistrationController implements Initializable {
             int sqlCode = ex.getErrorCode();
             String sqlState = ex.getSQLState();
             System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
+            if(!sqlState.equals("02000")){
+                Ready2eat.succ = false;
+            }
+            else Ready2eat.succ = true;
         }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            
+            if(Ready2eat.succ){
+                    root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            }else{
+                    root = FXMLLoader.load(getClass().getResource("Registration.fxml"));
+            }
         } catch (IOException ex) {
             Logger.getLogger(RegistrationController.class.getName()).log(Level.SEVERE, null, ex);
         }

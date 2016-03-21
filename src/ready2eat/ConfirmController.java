@@ -26,7 +26,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -96,6 +95,7 @@ public class ConfirmController implements Initializable {
                 System.out.println(selectSQL2);
                 PreparedStatement statement2 = con.prepareStatement(selectSQL2);
                 statement2.executeUpdate();
+                Ready2eat.isBook=true;
             }
             con.close();
         }
@@ -107,10 +107,11 @@ public class ConfirmController implements Initializable {
             String sqlState = e.getSQLState();
             System.out.println("Code: " + sqlCode + "  sqlState: " + sqlState);
         }
-        
-        table_confirm.setText("Your table number is: " + table_num + "\n" +
-                            "For Time Slot: " + time_slot);
-    }  
+        if(Ready2eat.isBook){
+        table_confirm.setText("Your table number is : T " + table_num + "\n\n" +
+                              "For Time : " + time_slot);
+        }
+    }   
     
     @FXML
     public void backToFront(ActionEvent event) throws IOException {
