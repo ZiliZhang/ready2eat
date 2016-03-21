@@ -41,6 +41,7 @@ public class PaymentController implements Initializable {
     
     String user_email = "";
     String user_info = "";
+    String comments;
     ObservableList<String> order = FXCollections.observableArrayList(new ArrayList<String>());
     ResultSet rs;
     String resto = "";
@@ -57,6 +58,7 @@ public class PaymentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         user_email = (String) rb.getObject("");
         orderMap = (HashMap) rb.getObject("orderMap");
+        comments = (String) rb. getObject("comments");
         Connection con;
         Statement statement;
         try {
@@ -70,7 +72,8 @@ public class PaymentController implements Initializable {
                                "Username: " + rs.getString(2) + "\n" +
                                "Phone Number: " + rs.getString(4) + "\n" +
                                "Billing Address: " + rs.getString(5) + "\n" +
-                               "Card Number (last 4 digits): " + rs.getString(6).substring(rs.getString(6).length()-4, rs.getString(6).length()) + "\n";
+                               "Card Number (last 4 digits): " + rs.getString(6).substring(rs.getString(6).length()-4, rs.getString(6).length()) + "\n" +
+                                "Comments: " + comments;
             con.close();
             rs.close();
         }
@@ -108,6 +111,8 @@ public class PaymentController implements Initializable {
                            return order;
                        case "total":
                            return total;
+                       case "comments":
+                           return comments;
                        case "resto":
                            return resto;
                        case "istakeout":

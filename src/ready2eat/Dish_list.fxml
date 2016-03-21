@@ -36,7 +36,7 @@
       </ImageView>
 
       <Button fx:id="exit" layoutX="584.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#exit" text="Exit" />
-      <TextField id="ordercomments" layoutX="35.0" layoutY="401.0" prefHeight="149.0" prefWidth="280.0" />
+      <TextField id="ordercomments" fx:id="comment" layoutX="35.0" layoutY="401.0" prefHeight="149.0" prefWidth="280.0" />
       <Label layoutX="35.0" layoutY="367.0" prefHeight="29.0" prefWidth="223.0" text="Order comments" textFill="#ce2d4f">
          <font>
             <Font name="Microsoft Tai Le" size="13.0" />

@@ -27,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -49,6 +50,8 @@ public class DishController implements Initializable {
     private ListView<String> order_list = new ListView<>();
     @FXML
     private Button exit;
+    @FXML
+    private TextField comment;
     
     /**
      * Initializes the controller class.
@@ -107,12 +110,14 @@ public class DishController implements Initializable {
     private void payAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = null;
+        String comments = comment.getText();
         ResourceBundle rb = new ResourceBundle(){
             @Override
             protected Object handleGetObject(String key) {
                 if (key.equals("orders")) return orders;
                 if (key.equals("resto")) return resto_name;
                 if (key.equals("orderMap")) return orderMap;
+                if (key.equals("comments")) return comments;
                 else return user_email;
             }
             @Override

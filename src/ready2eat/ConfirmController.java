@@ -58,8 +58,9 @@ public class ConfirmController implements Initializable {
             user_email = (String) rb.getObject("");
             Float total = (Float) rb.getObject("total");
             String resto = (String) rb.getObject("resto");
+            String comments = (String) rb.getObject("comments");
             String selectSQL = "INSERT INTO payments VALUES (default, '" + 
-                    user_email + "', default, '',NULL," + 
+                    user_email + "', default, '" + comments + "',NULL," + 
                     ((boolean) rb.getObject("istakeout")) + 
                     "," + total + ")";
             System.out.println(selectSQL);

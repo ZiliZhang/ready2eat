@@ -45,6 +45,7 @@ public class BookController implements Initializable {
     String resto;
     boolean istakeout;
     Float total;
+    String comments;
     String user_email;
     String currentItemSelected;
     Integer table_num;
@@ -61,6 +62,7 @@ public class BookController implements Initializable {
         istakeout = (boolean) rb.getObject("istakeout");
         total = (Float) rb.getObject("total");
         user_email = (String) rb.getObject("");
+        comments = (String) rb.getObject("comments");
         //resto = "Cuisine Szechuan";
         Connection con;
         Statement statement;
@@ -116,6 +118,8 @@ public class BookController implements Initializable {
                            return true;
                        case "table_num":
                            return table_num;
+                       case "comments":
+                           return comments;
                        case "time_slot":
                            return time_slot;
                        case "orderMap":
